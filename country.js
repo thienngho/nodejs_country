@@ -12,15 +12,15 @@ class Country extends EventEmitter {
         let text = fs.readFileSync(this.filename);
         let jsonContent = JSON.parse(text);
         let i = 0;
-            for (i; i<jsonContent.length; i++) {
-                var data = {
-                    country: jsonContent[i].country,
-                    city: jsonContent[i].city,
-                    index: i
-                };
-                this.emit('countrydata', data);
-                sleep.for(1000);
-            }
+        for (i; i<jsonContent.length; i++) {
+            var data = {
+                country: jsonContent[i].country,
+                city: jsonContent[i].city,
+                index: i
+            };
+            this.emit('countrydata', data);
+            sleep.for(1000);
+        }
     }
 }
 
