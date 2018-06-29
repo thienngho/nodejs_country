@@ -9,19 +9,20 @@ class Country extends EventEmitter {
 
     readData() {
         try {
-            let text = fs.readFileSync(this.filename);
-            let jsonContent = JSON.parse(text);
-
-            jsonContent.forEach(item => {
-                var data = {
-                    country: item.country,
-                    city: item.city,
-                    index: jsonContent.indexOf(item)
-                }
-                setTimeout(() => {
-                    this.emit('countrydata', data);
-                }, 1000);
-            });
+            fs.readFile(this.filename, function(err, text) {
+                let jsonContent = JSON.parse(text.toString());
+                jsonContent.forEach((item, index) => {
+                    let interval = setInterval(() => {
+                        var data = {
+                            country: item.country,
+                            city: item.city,
+                            index
+                        }
+                        this.emit('countrydata', data);
+                        clearInterval(interval);
+                    }, index * 1000);
+                });
+            }.bind(this));
         } catch (error) {
             console.error('There was an error: ' +error);
             return;
