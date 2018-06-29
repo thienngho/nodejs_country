@@ -1,6 +1,5 @@
 const EventEmitter = require('events');
 const fs = require('fs');
-const sleep = require('sleeping');
 
 class Country extends EventEmitter {
     constructor(filename) {
@@ -19,8 +18,9 @@ class Country extends EventEmitter {
                     city: item.city,
                     index: jsonContent.indexOf(item)
                 }
-                this.emit('countrydata', data);
-                sleep.for(1000);
+                setTimeout(() => {
+                    this.emit('countrydata', data);
+                }, 1000);
             });
         } catch (error) {
             console.error('There was an error: ' +error);
