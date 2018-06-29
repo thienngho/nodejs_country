@@ -1,3 +1,6 @@
 # node_country
 
-`npm run start`
+```
+npm i
+npm run start
+```
