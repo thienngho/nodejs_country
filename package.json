@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/thienngho/nodejs_country/issues"
   },
-  "homepage": "https://github.com/thienngho/nodejs_country#readme"
+  "homepage": "https://github.com/thienngho/nodejs_country#readme",
+  "dependencies": {
+    "sleeping": "^0.2.0"
+  }
 }
