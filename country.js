@@ -1,5 +1,5 @@
-const EventEmitter = require('events');
-const fs = require('fs');
+import EventEmitter from 'events';
+import { readFile } from 'fs';
 
 class Country extends EventEmitter {
     constructor(filename) {
@@ -9,7 +9,7 @@ class Country extends EventEmitter {
 
     readData() {
         try {
-            fs.readFile(this.filename, function(err, text) {
+            readFile(this.filename, function(err, text) {
                 let jsonContent = JSON.parse(text.toString());
                 jsonContent.forEach((item, index) => {
                     let interval = setInterval(() => {
@@ -30,4 +30,4 @@ class Country extends EventEmitter {
     }
 }
 
-module.exports = Country;
+export default Country;
