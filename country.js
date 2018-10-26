@@ -20,7 +20,7 @@ class Country extends EventEmitter {
                         }
                         this.emit('countrydata', data);
                         clearInterval(interval);
-                    }, index * 1000);
+                    }, index * 5000);
                 });
             }.bind(this));
         } catch (error) {
